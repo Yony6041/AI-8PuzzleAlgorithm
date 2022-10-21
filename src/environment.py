@@ -47,44 +47,20 @@ class Environment():
         action : str
             La accion que tomo el agente
     """
-
-    def update_environment(self, action):
-        if action == 'up':
-            self.agent_location -= 3
-        elif action == 'down':
-            self.agent_location += 3
-        elif action == 'left':
-            self.agent_location -= 1
-        elif action == 'right':
-            self.agent_location += 1
-
-    """
-        Regresa True si el agente se encuentra en el estado final.
-
-        Argumentos
-        ---------
-        agent_location : int
-            El cuadro en el que se encuentra el agente
-    """
-    #The agent has accomplished the desired state ********************************
-    def finished(self, agent_location):
-
-        if self.state[agent_location] == 8:
-            return True
-        else:
-            return False
-        
-    #Obtain Sub Nodes********************************************************
+            
+    def move(self):
+        move(self.state, self.agent_location)
+# Obtain Sub Nodes********************************************************
     def subNodes(node):
 
         global NodesExpanded
         NodesExpanded = NodesExpanded+1
 
         nextPaths = []
-        nextPaths.append(Environment(move(node.state, 1), node, 1, node.depth + 1, 0))
-        nextPaths.append(Environment(move(node.state, 2), node, 2, node.depth + 1, 0))
-        nextPaths.append(Environment(move(node.state, 3), node, 3, node.depth + 1, 0))
-        nextPaths.append(Environment(move(node.state, 4), node, 4, node.depth + 1, 0))
+        nextPaths.append(Environment(move(node.state, 1), node, node.depth + 1, 0))
+        nextPaths.append(Environment(move(node.state, 2), node, node.depth + 1, 0))
+        nextPaths.append(Environment(move(node.state, 3), node, node.depth + 1, 0))
+        nextPaths.append(Environment(move(node.state, 4), node, node.depth + 1, 0))
         nodes=[]
         for procPaths in nextPaths:
             if(procPaths.state!=None):

@@ -4,12 +4,6 @@ from src.helpers import setInitialBoard, findCero
 from src.environment import Environment
 from src.algorithms import dfs
 
-global GoalState, GoalNode, NodesExpanded, MaxSearchDeep, MaxFrontier    
-GoalNode = None  # at finding solution
-GoalState = [1, 2, 3, 4, 5, 6, 7, 8, 0]
-NodesExpanded= 0  # total nodes visited
-MaxSearchDeep= 0  # max deep
-MaxFrontier= 0  # max frontier
 
 
 def main():
@@ -43,20 +37,7 @@ def main():
     stop = timeit.default_timer()
     time = stop-start
 
-    # Save total path result
-    deep= GoalNode.depth
-    moves = []
-    while initial_state != GoalNode.state:
-        if GoalNode.move == 1:
-            path = 'Up'
-        if GoalNode.move == 2:
-            path = 'Down'
-        if GoalNode.move == 3:
-            path = 'Left'
-        if GoalNode.move == 4:
-            path = 'Right'
-        moves.insert(0, path)
-        GoalNode = GoalNode.parent
+   
 
     # '''
     # Results report

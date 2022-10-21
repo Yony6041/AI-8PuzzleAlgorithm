@@ -5,9 +5,16 @@ def setInitialBoard(data: [str]):
         board.append(int(data[i]))
     return board
 
+
+"""
+    Regresa una lista con las posibles acciones que puede tomar el agente
+    dependiendo de la posicion en la que se encuentre y el estado del tablero.
+    Argumentos
+    ---------
+    agent_location : int
+        El cuadro en el que se encuentra el agente
+"""
 # Move agent on board**************************************************************
-
-
 def move(state: [int], direction: int):
     # generate a copy
     newState = state[:]
@@ -154,37 +161,6 @@ def move(state: [int], direction: int):
             return None
         return newState
 
-
-"""
-    Regresa una lista con las posibles acciones que puede tomar el agente
-    dependiendo de la posicion en la que se encuentre y el estado del tablero.
-    Argumentos
-    ---------
-    agent_location : int
-        El cuadro en el que se encuentra el agente
-"""
-def class_possible_actions(agent_location: int):
-
-    possible_actions = ['up', 'down', 'left', 'right']
-
-    if agent_location[0] == 0:
-        return [(1, 'left', 0), (3, 'up', 0)]
-    elif agent_location[1] == 0:
-        return [(0, 'right', 1), (2, 'left', 1), (4, 'up', 1)]
-    elif agent_location[2] == 0:
-        return [(1, 'right', 2), (5, 'up', 2)]
-    elif agent_location[3] == 0:
-        return [(0, 'down', 3), (4, 'left', 3), (6, 'up', 3)]
-    elif agent_location[4] == 0:
-        return [(1, 'down', 4), (3, 'right', 4), (5, 'left', 4), (7, 'up', 4)]
-    elif agent_location[5] == 0:
-        return [(2, 'down', 5), (4, 'right', 5), (8, 'up', 5)]
-    elif agent_location[6] == 0:
-        return [(3, 'down', 6), (7, 'left', 6)]
-    elif agent_location[7] == 0:
-        return [(4, 'down', 7), (6, 'right', 7), (8, 'left', 7)]
-    else:
-        return [(5, 'down', 8), (7, 'right', 8)]
 
 def findCero(state: [int]):
     for i in range(len(state)):
