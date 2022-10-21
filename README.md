@@ -31,10 +31,10 @@ Link: wikipedia -> https://en.wikipedia.org/wiki/Backtracking
 
 ## 3. Datos de entrada del programa
 
-Execute python via comand prompt:
+Execute python3 via comand prompt:
 
 ```sh
-python main.py 'Estado del tablero inicial'
+python3 main.py 'Estado del tablero inicial'
 ```
  El estado del tablero inicial  es con lo que se va a inicar a correr el algoritmo para encontrar el mejor camino<br/>
 
@@ -44,12 +44,12 @@ Ejemplo dfs:
 python3 main.py 1,e,2,6,3,4,7,5,8
 ```
 
-## 4. Resultados 
+## 4. Reporte de resultados
 
 Se imprimiran en la terminal las acciones realizadas por el agente para resolver el problema
 
 ```sh
-\ai\AI-8PuzzleAlgorithm>python main.py 1,0,2,6,3,4,7,5,8
+\ai\AI-8PuzzleAlgorithm>python3 main.py 1,0,2,6,3,4,7,5,8
 path:  ['Left', 'Up', 'Up', 'Left', 'Down', 'Right', 'Down', 'Left', 'Up', 'Right', 'Right', 'Up', 'Left', 'Left', 'Down', 'Right', 'Right', 'Up', 'Left', 'Down', 'Down', 'Right', 'Up', 'Left', 'Up', 'Left']
 cost:  26
 nodes expanded:  166786
