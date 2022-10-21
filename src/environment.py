@@ -1,6 +1,4 @@
-import pattern  # Path: src/helpers/pattern.py
-import nup
-
+from src.helpers import move
 
 """
 En el ambiente vamos a tener 2 cosas:
@@ -25,45 +23,32 @@ nuestro caso es el tablero de 3x3
 
 
 class Environment():
+    
+    # Environment constructor ***********************************************
+    def __init__(self, state, parent, depth, agent_location):
+        self.state = state
+        self.parent = parent
+        self.depth = depth
+        self.agent_location = agent_location
+        if self.state:
+            self.map = ''.join(str(e) for e in self.state)
+    def __eq__(self, other):
+        return self.map == other.map
+    def __lt__(self, other):
+        return self.map < other.map
+    def __str__(self):
+        return str(self.map)  
 
-    def __init__(self, puzzle):
-        self.puzzle = puzzle
-
-        """
-        Regresa una lista con las posibles acciones que puede tomar el agente
-        dependiendo de la posicion en la que se encuentre y el estado del tablero.
-
-        Argumentos
-        ---------
-        agent_location : int
-            El cuadro en el que se encuentra el agente
-        """
-
-    def possible_actions(self, agent_location):
-
-        possible_actions = ['up', 'down', 'left', 'right']
-
-        def switch(agent_location):
-
-            if agent_location in [6, 7, 8]:
-                possible_actions.remove('up')
-            if agent_location in [6, 7, 8]:
-                possible_actions.remove('down')
-            if agent_location in [0, 3, 6]:
-                possible_actions.remove('left')
-            if agent_location in [2, 5, 8]:
-                possible_actions.remove('right')
-            return possible_actions
-
-    def update_environment(self, action):
-        """
+    """
         Actualiza el ambiente dependiendo de la accion que tomo el a gente.
 
         Argumentos
         ---------
         action : str
             La accion que tomo el agente
-        """
+    """
+
+    def update_environment(self, action):
         if action == 'up':
             self.agent_location -= 3
         elif action == 'down':
@@ -72,32 +57,36 @@ class Environment():
             self.agent_location -= 1
         elif action == 'right':
             self.agent_location += 1
-            
-            
-    def return_reward(self, agent_location):
-        """
-        Regresa la recompensa que obtuvo el agente dependiendo de la posicion
-        en la que se encuentra.
 
-        Argumentos
-        ---------
-        agent_location : int
-            El cuadro en el que se encuentra el agente
-        """
-        if self.puzzle[agent_location] == 0:
-            return 10
-        else:
-            return -1
-    def is_finished(self, agent_location):
-        """
+    """
         Regresa True si el agente se encuentra en el estado final.
 
         Argumentos
         ---------
         agent_location : int
             El cuadro en el que se encuentra el agente
-        """
-        if self.puzzle[agent_location] == 0:
+    """
+    #The agent has accomplished the desired state ********************************
+    def finished(self, agent_location):
+
+        if self.state[agent_location] == 8:
             return True
         else:
             return False
+        
+    #Obtain Sub Nodes********************************************************
+    def subNodes(node):
+
+        global NodesExpanded
+        NodesExpanded = NodesExpanded+1
+
+        nextPaths = []
+        nextPaths.append(Environment(move(node.state, 1), node, 1, node.depth + 1, 0))
+        nextPaths.append(Environment(move(node.state, 2), node, 2, node.depth + 1, 0))
+        nextPaths.append(Environment(move(node.state, 3), node, 3, node.depth + 1, 0))
+        nextPaths.append(Environment(move(node.state, 4), node, 4, node.depth + 1, 0))
+        nodes=[]
+        for procPaths in nextPaths:
+            if(procPaths.state!=None):
+                nodes.append(procPaths)
+        return nodes
