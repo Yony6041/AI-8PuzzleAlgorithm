@@ -23,6 +23,7 @@ def dfs(environment):
         print("What we want:", GoalState)
         print("What we have:", node.state)
         if node.state == GoalState:
+            print("We got the right answer!")
             GoalNode = node
             return stack
         #inverse the order of next paths for execution porpuses
