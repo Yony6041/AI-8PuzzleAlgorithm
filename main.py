@@ -1,7 +1,7 @@
 import argparse
 import timeit
 from src.environment import Environment
-from src.algorithms import dfs
+from src.algorithms import *
 from src.helpers import *
 
 
@@ -25,6 +25,8 @@ def main():
 
     # Inicializa el ambiente
     universe = Environment(initial_state, None, 0)
+    print("\n")
+    print("---------------------------------- START ----------------------------------")
     print('Initial state of the Puzzle: ', universe.state)
     print('The agent is on index: ', findCero(initial_state))
 
@@ -35,21 +37,21 @@ def main():
         dfs(universe)
         # '''
         # Results report
-
         # Todo: Path should contain the moves to get to the goal state
-        print("path: ", moves)
-
-        print("nodes expanded: ",str(NodesExpanded))
-        print("search_depth: ",str(deep))
-        print("MaxSearchDeep: ",str(MaxSearchDeep))
+        stop = timeit.default_timer()
+        time = stop-start
+        # print("path: ", moves)
+        print("nodes expanded: ",str(Environment.countNodes()))
+        print("search_depth: ",str(getNodeDeep()))
+        print("MaxSearchDeep: ",str(getMaxSearchDeep()))
         print('The puzzle was solved in: ', time, ' seconds')
         print("running_time: ", format(time, '.8f'))
         # '''
 
     else:
-        print("The puzzle is not solvable please try a different board setup")
-    stop = timeit.default_timer()
-    time = stop-start
+        print("\n")
+        print("---------------------------------- RESULTS ----------------------------------")
+        print("The puzzle is not solvable. Try with another puzzle.")
 
 
   

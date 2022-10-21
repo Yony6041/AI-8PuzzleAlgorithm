@@ -3,9 +3,6 @@ from src.environment import Environment
 from src.helpers import *
 
 
-
-
-
 # Depth First Search *****************************************************
 def dfs(environment):
     global GoalState, GoalNode, MaxSearchDeep, MaxFrontier, initial_state
@@ -18,6 +15,8 @@ def dfs(environment):
         print("What we want:", GoalState)
         print("What we have:", node.state)
         if node.state == GoalState:
+            print("\n")
+            print("---------------------------------- RESULTS ----------------------------------")
             print("We got the right answer!")
             GoalNode = node
             return stack
@@ -35,8 +34,7 @@ def dfs(environment):
             MaxFrontier = len(stack)
             
     # Path result
-    print("We got the wrong answer!", GoalNode)
-    deep = GoalNode.depth
+    print("We got the wrong answer!")
     
     while initial_state != GoalNode.state:
         if GoalNode.move == 1:
@@ -49,4 +47,12 @@ def dfs(environment):
             path = 'Right'
         moves.insert(0, path)
         GoalNode = GoalNode.parent
+
+# Return Goal Node Depth*****************************************************
+def getNodeDeep():
+    return GoalNode.depth
+
+# Return the Deepest Node Explored*******************************************
+def getMaxSearchDeep():
+    return MaxSearchDeep
     

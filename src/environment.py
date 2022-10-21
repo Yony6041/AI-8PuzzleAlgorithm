@@ -51,6 +51,8 @@ class Environment():
 
         global NodesExpanded
         NodesExpanded = NodesExpanded+1
+        Environment.countNodes()
+
         print("NodesExpanded:", NodesExpanded)
         nextPaths = []
         nextPaths.append(Environment(move(state, 1), parent, depth + 1))
@@ -62,3 +64,11 @@ class Environment():
             if(procPaths.state!=None):
                 nodes.append(procPaths)
         return nodes
+
+# Obtain Nodes Expand Counter*********************************************
+
+    countNodes = 0
+
+    def countNodes():
+        countNodes = NodesExpanded
+        return countNodes
