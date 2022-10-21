@@ -47,7 +47,7 @@ def main():
         # '''
 
     else:
-        print("The puzzle is not solvable")
+        print("The puzzle is not solvable please try a different board setup")
     stop = timeit.default_timer()
     time = stop-start
 
