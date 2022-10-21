@@ -1,13 +1,8 @@
 from collections import deque
 from src.environment import Environment
-from src.helpers import isSolvable
+from src.helpers import *
 
-global GoalState, GoalNode, MaxSearchDeep, MaxFrontier, moves
-GoalNode = None  # at finding solution
-GoalState = [1, 2, 3, 4, 5, 6, 7, 8, 0]
-MaxSearchDeep= 0  # max deep
-MaxFrontier= 0  # max frontier
-moves = []
+
 
 
 
@@ -16,9 +11,6 @@ def dfs(environment):
     global GoalState, GoalNode, MaxSearchDeep, MaxFrontier, initial_state
     boardVisited = set()
     stack = list([environment])
-    
-    if(not isSolvable(environment.state)): 
-        return 'The presented problem has no solution'
     initial_state = environment.state
     while stack:
         node = stack.pop()
@@ -42,9 +34,9 @@ def dfs(environment):
             
             MaxFrontier = len(stack)
             
-    # Save total path result
+    # Path result
     print("We got the wrong answer!", GoalNode)
-    deep: int= GoalNode.depth
+    deep = GoalNode.depth
     
     while initial_state != GoalNode.state:
         if GoalNode.move == 1:

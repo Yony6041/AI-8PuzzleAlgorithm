@@ -1,3 +1,12 @@
+global GoalState, GoalNode, MaxSearchDeep, MaxFrontier, moves, NodesExpanded, deep
+GoalNode = None  # at finding solution
+GoalState = [1, 2, 3, 4, 5, 6, 7, 8, 0]
+MaxSearchDeep= 0  # max deep
+MaxFrontier= 0  # max frontier
+moves = []
+NodesExpanded= 0  # total nodes visited= 0  # total nodes visited
+deep = 0  # deep
+
 # Sets initial board ****************************************************
 def setInitialBoard(data: [str]):
     board = []

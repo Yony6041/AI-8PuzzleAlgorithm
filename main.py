@@ -1,9 +1,8 @@
 import argparse
 import timeit
-from src.helpers import setInitialBoard, findCero
 from src.environment import Environment
 from src.algorithms import dfs
-
+from src.helpers import *
 
 
 def main():
@@ -31,23 +30,29 @@ def main():
 
     print('The AI is solving the puzzle...')
     
-    # Running Depth First Search algorithm
-    dfs(universe)
+    if(isSolvable(universe.state)): 
+        # Running Depth First Search algorithm
+        dfs(universe)
+        # '''
+        # Results report
 
+        # Todo: Path should contain the moves to get to the goal state
+        print("path: ", moves)
+
+        print("nodes expanded: ",str(NodesExpanded))
+        print("search_depth: ",str(deep))
+        print("MaxSearchDeep: ",str(MaxSearchDeep))
+        print('The puzzle was solved in: ', time, ' seconds')
+        print("running_time: ", format(time, '.8f'))
+        # '''
+
+    else:
+        print("The puzzle is not solvable")
     stop = timeit.default_timer()
     time = stop-start
 
-   
 
-    # '''
-    # Results report
-    print("path: ", moves)
-    print("nodes expanded: ",str(NodesExpanded))
-    print("search_depth: ",str(deep))
-    print("MaxSearchDeep: ",str(MaxSearchDeep))
-    print("running_time: ", format(time, '.8f'))
-    # '''
-
+  
 
 if __name__ == '__main__':
     main()

@@ -1,9 +1,4 @@
-from src.helpers import move
-
-
-global NodesExpanded
-NodesExpanded= 0  # total nodes visited= 0  # total nodes visited
-
+from src.helpers import *
 
 """
 En el ambiente vamos a tener el entorno o bien el "mundo" en el que se encuentra el agente que en
@@ -56,7 +51,7 @@ class Environment():
 
         global NodesExpanded
         NodesExpanded = NodesExpanded+1
-
+        print("NodesExpanded:", NodesExpanded)
         nextPaths = []
         nextPaths.append(Environment(move(state, 1), parent, depth + 1))
         nextPaths.append(Environment(move(state, 2), parent, depth + 1))
