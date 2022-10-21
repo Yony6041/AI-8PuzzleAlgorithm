@@ -41,7 +41,7 @@ def main():
 
     # '''
     # Results report
-    print("path: ",moves)
+    print("path: ", moves)
     print("nodes expanded: ",str(NodesExpanded))
     print("search_depth: ",str(deep))
     print("MaxSearchDeep: ",str(MaxSearchDeep))
