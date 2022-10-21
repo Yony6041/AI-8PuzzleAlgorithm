@@ -1,17 +1,17 @@
 from collections import deque
 from src.environment import Environment
 
-global GoalState, GoalNode, NodesExpanded, MaxSearchDeep, MaxFrontier
+global GoalState, GoalNode, MaxSearchDeep, MaxFrontier
 GoalNode = None  # at finding solution
 GoalState = [1, 2, 3, 4, 5, 6, 7, 8, 0]
-NodesExpanded= 0  # total nodes visited
 MaxSearchDeep= 0  # max deep
 MaxFrontier= 0  # max frontier
 
 
+
 # Depth First Search *****************************************************
-def dfs(environment: Environment):
-    global GoalState, GoalNode, NodesExpanded, MaxSearchDeep, MaxFrontier
+def dfs(environment):
+    global GoalState, GoalNode, MaxSearchDeep, MaxFrontier
     boardVisited = set()
     stack = list([environment])
     while stack:
@@ -22,7 +22,15 @@ def dfs(environment: Environment):
             GoalNode = node
             return stack
         #inverse the order of next paths for execution porpuses
-        posiblePaths = reversed(environment.subNodes(node))
+        
+        # Me dice que node son dos argumentos 
+        
+        
+        # File "/home/schamane/unam/ai/AI-8PuzzleAlgorithm/src/algorithms.py", line 26, in dfs
+        # reversedPaths = environment.subNodes(node)
+        # TypeError: Environment.subNodes() takes 1 positional argument but 2 were given
+        print("node:", node.depth)
+        posiblePaths = reversed(environment.subNodes(node.state, node, node.depth))
         for path in posiblePaths:
             if path.map not in boardVisited:
                 stack.append(path)

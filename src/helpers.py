@@ -11,7 +11,8 @@ def setInitialBoard(data: [str]):
     dependiendo de la posicion en la que se encuentre y el estado del tablero.
     Argumentos
     ---------
-    agent_location : int
+    state : int
+    direction : int
         El cuadro en el que se encuentra el agente
 """
 # Move agent on board**************************************************************

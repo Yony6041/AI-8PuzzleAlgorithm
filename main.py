@@ -25,7 +25,7 @@ def main():
     initial_state = setInitialBoard(data)
 
     # Inicializa el ambiente
-    universe = Environment(initial_state, None, 0, findCero(initial_state))
+    universe = Environment(initial_state, None, 0)
     print('Initial state of the Puzzle: ', universe.state)
     print('The agent is on index: ', findCero(initial_state))
 

@@ -1,12 +1,14 @@
 from src.helpers import move
 
+
+global NodesExpanded
+NodesExpanded= 0  # total nodes visited= 0  # total nodes visited
+
+
 """
-En el ambiente vamos a tener 2 cosas:
-1. El entorno o bien el "mundo" en el que se encuentra el agente que en
+En el ambiente vamos a tener el entorno o bien el "mundo" en el que se encuentra el agente que en
 nuestro caso es el tablero de 3x3
 
-1. El entorno en el cual se encuentra el agente.
-2. La variable agent_location,nos da la posicion del agente en el entorno.
 
     Nuestro estado inicial es el siguiente:
 
@@ -25,11 +27,10 @@ nuestro caso es el tablero de 3x3
 class Environment():
     
     # Environment constructor ***********************************************
-    def __init__(self, state, parent, depth, agent_location):
+    def __init__(self, state, parent, depth):
         self.state = state
         self.parent = parent
         self.depth = depth
-        self.agent_location = agent_location
         if self.state:
             self.map = ''.join(str(e) for e in self.state)
     def __eq__(self, other):
@@ -48,19 +49,19 @@ class Environment():
             La accion que tomo el agente
     """
             
-    def move(self):
-        move(self.state, self.agent_location)
+    def move(self, direction: int):
+        move(self.state, direction)
 # Obtain Sub Nodes********************************************************
-    def subNodes(node):
+    def subNodes(node, state, parent, depth):
 
         global NodesExpanded
         NodesExpanded = NodesExpanded+1
 
         nextPaths = []
-        nextPaths.append(Environment(move(node.state, 1), node, node.depth + 1, 0))
-        nextPaths.append(Environment(move(node.state, 2), node, node.depth + 1, 0))
-        nextPaths.append(Environment(move(node.state, 3), node, node.depth + 1, 0))
-        nextPaths.append(Environment(move(node.state, 4), node, node.depth + 1, 0))
+        nextPaths.append(Environment(move(state, 1), parent, depth + 1))
+        nextPaths.append(Environment(move(state, 2), parent, depth + 1))
+        nextPaths.append(Environment(move(state, 3), parent, depth + 1))
+        nextPaths.append(Environment(move(state, 4), parent, depth + 1))
         nodes=[]
         for procPaths in nextPaths:
             if(procPaths.state!=None):
