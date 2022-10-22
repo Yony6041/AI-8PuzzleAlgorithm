@@ -26,11 +26,11 @@ def main():
     # Inicializa el ambiente
     universe = Environment(initial_state, None, 0, 0)
     print("\n")
-    print("---------------------------------- START ----------------------------------")
-    print('Initial state of the Puzzle: ', universe.state)
-    print('The agent is on index: ', findCero(initial_state))
+    print("---------------------------------- Comienzo ----------------------------------")
+    print('Estado inicial 8-Puzzle: ', universe.state)
+    print('El agente esta en el indice ', findCero(initial_state))
 
-    print('The AI is solving the puzzle...')
+    print('La IA esta resolviendo el puzzle...')
     
     if(isSolvable(universe.state)): 
         # Running Depth First Search algorithm
@@ -40,18 +40,18 @@ def main():
         # Todo: Path should contain the moves to get to the goal state
         stop = timeit.default_timer()
         time = stop-start
-        print("path: ", getMoves())
-        print("nodes expanded: ",str(Environment.countNodes()))
-        print("search_depth: ",str(getNodeDeep()))
-        print("MaxSearchDeep: ",str(getMaxSearchDeep()))
-        print('The puzzle was solved in: ', time, ' seconds')
+        print("Movimientos a seguir: ", getMoves())
+        print("Nodos expandidos: ",str(Environment.countNodes()))
+        print("Profundidad Nodo: ",str(getNodeDeep()))
+        print("Maximo Nodo Profundo: ",str(getMaxSearchDeep()))
+        print('El 8-puzzle se resolvio en: ', time, ' segundos')
         print("running_time: ", format(time, '.8f'))
         # '''
 
     else:
         print("\n")
-        print("---------------------------------- RESULTS ----------------------------------")
-        print("The puzzle is not solvable. Try with another puzzle.")
+        print("---------------------------------- RESULTADOS ----------------------------------")
+        print("El puzzle no tiene solucion. Intenta con otro puzzle.")
 
 
   

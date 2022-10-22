@@ -12,12 +12,12 @@ def dfs(environment):
     while stack:
         node = stack.pop()
         boardVisited.add(node.map)
-        print("What we want:", GoalState)
-        print("What we have:", node.state)
+        print("Lo que queremos:", GoalState)
+        print("Lo que tenemos:", node.state)
         if node.state == GoalState:
             print("\n")
-            print("---------------------------------- RESULTS ----------------------------------")
-            print("We got the right answer!")
+            print("---------------------------------- RESULTADOS ----------------------------------")
+            print("Encontramos la solucion!")
             GoalNode = node
             setMoves(initial_state, GoalNode)
             return stack
@@ -35,7 +35,7 @@ def dfs(environment):
             MaxFrontier = len(stack)
             
     # Path result
-    print("We got the wrong answer!")
+    print("No encontramos solucion!")
 
 # Return Goal Node Depth*****************************************************
 def getNodeDeep():
@@ -48,19 +48,17 @@ def getMaxSearchDeep():
 moves = []
 
 def setMoves(initial_state, GoalNode):
-    i = 0
     while initial_state != GoalNode.state:
         string = ""
         if GoalNode.direccion == 1:
-            string = 'Up'
+            string = 'Arriba'
         elif GoalNode.direccion == 2:
-            string = 'Down'
+            string = 'Abajo'
         elif GoalNode.direccion == 3:
-            string = 'Left'
+            string = 'Izquierda'
         else:
-            string = 'Right'
-        moves.insert(i, string)
-        i = i + 1
+            string = 'Derecha'
+        moves.insert(0, string)
         GoalNode = GoalNode.parent
 
 def getMoves():

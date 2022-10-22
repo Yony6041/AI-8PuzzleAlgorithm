@@ -54,7 +54,7 @@ class Environment():
         NodesExpanded = NodesExpanded+1
         Environment.countNodes()
 
-        print("NodesExpanded:", NodesExpanded)
+        print("Nodos Expandidos:", NodesExpanded)
         nextPaths = []
         nextPaths.append(Environment(move(state, 1), parent, depth + 1, 1))
         nextPaths.append(Environment(move(state, 2), parent, depth + 1, 2))
