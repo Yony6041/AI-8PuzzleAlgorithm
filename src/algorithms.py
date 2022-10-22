@@ -19,6 +19,7 @@ def dfs(environment):
             print("---------------------------------- RESULTS ----------------------------------")
             print("We got the right answer!")
             GoalNode = node
+            setMoves(initial_state, GoalNode)
             return stack
         #inverse the order of next paths for execution porpuses
         print("node:", node.depth)
@@ -35,18 +36,6 @@ def dfs(environment):
             
     # Path result
     print("We got the wrong answer!")
-    
-    while initial_state != GoalNode.state:
-        if GoalNode.move == 1:
-            path = 'Up'
-        if GoalNode.move == 2:
-            path = 'Down'
-        if GoalNode.move == 3:
-            path = 'Left'
-        if GoalNode.move == 4:
-            path = 'Right'
-        moves.insert(0, path)
-        GoalNode = GoalNode.parent
 
 # Return Goal Node Depth*****************************************************
 def getNodeDeep():
@@ -55,4 +44,25 @@ def getNodeDeep():
 # Return the Deepest Node Explored*******************************************
 def getMaxSearchDeep():
     return MaxSearchDeep
+
+moves = []
+
+def setMoves(initial_state, GoalNode):
+    i = 0
+    while initial_state != GoalNode.state:
+        string = ""
+        if GoalNode.direccion == 1:
+            string = 'Up'
+        elif GoalNode.direccion == 2:
+            string = 'Down'
+        elif GoalNode.direccion == 3:
+            string = 'Left'
+        else:
+            string = 'Right'
+        moves.insert(i, string)
+        i = i + 1
+        GoalNode = GoalNode.parent
+
+def getMoves():
+    return moves
     

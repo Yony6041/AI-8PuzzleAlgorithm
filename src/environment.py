@@ -22,10 +22,11 @@ nuestro caso es el tablero de 3x3
 class Environment():
     
     # Environment constructor ***********************************************
-    def __init__(self, state, parent, depth):
+    def __init__(self, state, parent, depth, direccion):
         self.state = state
         self.parent = parent
         self.depth = depth
+        self.direccion = direccion
         if self.state:
             self.map = ''.join(str(e) for e in self.state)
     def __eq__(self, other):
@@ -55,10 +56,10 @@ class Environment():
 
         print("NodesExpanded:", NodesExpanded)
         nextPaths = []
-        nextPaths.append(Environment(move(state, 1), parent, depth + 1))
-        nextPaths.append(Environment(move(state, 2), parent, depth + 1))
-        nextPaths.append(Environment(move(state, 3), parent, depth + 1))
-        nextPaths.append(Environment(move(state, 4), parent, depth + 1))
+        nextPaths.append(Environment(move(state, 1), parent, depth + 1, 1))
+        nextPaths.append(Environment(move(state, 2), parent, depth + 1, 2))
+        nextPaths.append(Environment(move(state, 3), parent, depth + 1, 3))
+        nextPaths.append(Environment(move(state, 4), parent, depth + 1, 4))
         nodes=[]
         for procPaths in nextPaths:
             if(procPaths.state!=None):

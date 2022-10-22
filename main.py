@@ -24,7 +24,7 @@ def main():
     initial_state = setInitialBoard(data)
 
     # Inicializa el ambiente
-    universe = Environment(initial_state, None, 0)
+    universe = Environment(initial_state, None, 0, 0)
     print("\n")
     print("---------------------------------- START ----------------------------------")
     print('Initial state of the Puzzle: ', universe.state)
@@ -40,7 +40,7 @@ def main():
         # Todo: Path should contain the moves to get to the goal state
         stop = timeit.default_timer()
         time = stop-start
-        # print("path: ", moves)
+        print("path: ", getMoves())
         print("nodes expanded: ",str(Environment.countNodes()))
         print("search_depth: ",str(getNodeDeep()))
         print("MaxSearchDeep: ",str(getMaxSearchDeep()))
