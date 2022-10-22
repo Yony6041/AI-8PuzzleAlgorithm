@@ -10,6 +10,7 @@ Por:
 * Pérez Jacome David
 * Torres Escobedo Julio Cesar  
 Mexico, CDMX.
+
 <br>Lenguaje de programacion: Python 3.10.6<br />
 Descripcion: Implementacion Depth-First Search para resolver el 8 puzzle game.
 
@@ -32,7 +33,13 @@ Link: wikipedia ->  https://en.wikipedia.org/wiki/Depth-first_search
 
 Link: wikipedia -> https://en.wikipedia.org/wiki/Backtracking
 
-## 3. Datos de entrada del programa
+## 3. Adicionales
+
+Como adicional, implementamos un metodo donde regresa True si el puzzle tiene solucion. En caso contrario no existira una solucion y regresaremos que no existe solucion para este puzzle. Este metodo se baso teoricamente en el siguiente link:
+
+Link: https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
+
+## 4. Datos de entrada del programa
 
 Ejecutar python3 via comand prompt:
 
@@ -47,18 +54,17 @@ Ejemplo dfs:
 python3 main.py 1,0,2,6,3,4,7,5,8
 ```
 
-## 4. Reporte de resultados
+## 5. Reporte de resultados
 
 Se imprimiran en la terminal las acciones realizadas por el agente para resolver el problema
 
 ```sh
 \ai\AI-8PuzzleAlgorithm>python3 main.py 1,0,2,6,3,4,7,5,8
-path:  ['Left', 'Up', 'Up', 'Left', 'Down', 'Right', 'Down', 'Left', 'Up', 'Right', 'Right', 'Up', 'Left', 'Left', 'Down', 'Right', 'Right', 'Up', 'Left', 'Down', 'Down', 'Right', 'Up', 'Left', 'Up', 'Left']
-cost:  26
-nodes expanded:  166786
-search_depth:  26
-MaxSearchDeep:  27
-running_time: 3.97613275
+Movimientos a seguir: Mostraremos una lista de movimientos 
+Nodos expandidos:  El total de los nodos expandidos que se ejecuto en el codigo
+Profundidad Nodo: La profundidad en la que se encuentra nuestro nodo meta
+Profundidad Maxima: La profundidad maxima que recorrio el nodo
+running_time: El tiempo que tardo el algoritmo en hallar el nodo meta
 ```
 
 ![8puzzle](media/ciencias.jpeg)
