@@ -36,6 +36,7 @@ def dfs(environment):
             
     # Resultado si no encontramos la solucion
     print("No encontramos solucion!")
+    return False
 
 # Regresa la profunidad del nodo
 def getNodeDeep():

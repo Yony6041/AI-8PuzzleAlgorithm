@@ -39,6 +39,14 @@ Como adicional, implementamos un metodo donde regresa True si el puzzle tiene so
 
 Link: https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
 
+Aparte nuestro codigo solo soporta extender como maximo un total de 181440 nodos. Hicimos la prueba con el estado inicial que previamente fue dado:
+
+[1,0,2]
+[6,3,4]
+[7,5,8]
+
+Y no tiene solucion, pero anexamos ejemplos de los cuales si tiene solucion.
+
 ## 4. Datos de entrada del programa
 
 Ejecutar python3 via comand prompt:
@@ -51,7 +59,11 @@ python3 main.py 'Estado del tablero inicial'
 Ejemplo dfs:
 
 ```sh
-python3 main.py 1,0,2,6,3,4,7,5,8
+python3 main.py 2,4,8,7,3,5,1,6,0
+```
+
+```sh
+python3 main.py 0,1,2,3,4,5,6,7,8
 ```
 
 ## 5. Reporte de resultados
@@ -60,6 +72,7 @@ Se imprimiran en la terminal las acciones realizadas por el agente para resolver
 
 ```sh
 \ai\AI-8PuzzleAlgorithm>python3 main.py 1,0,2,6,3,4,7,5,8
+```
 Movimientos a seguir: Mostraremos una lista de movimientos 
 Nodos expandidos:  El total de los nodos expandidos que se ejecuto en el codigo
 Profundidad Nodo: La profundidad en la que se encuentra nuestro nodo meta

@@ -32,18 +32,19 @@ def main():
     
     if(isSolvable(universe.state)): 
         # Corremos el algoritmo depth first search
-        dfs(universe)
+        if(dfs(universe)):
         # '''
         # Reporte de resultados
-        stop = timeit.default_timer()
-        time = stop-start
-        print("Movimientos a seguir: ", getMoves())
-        print("Nodos Expandidos: ",str(Environment.countNodes()))
-        print("Profundidad Nodo: ",str(getNodeDeep()))
-        print("Profundidad Maxima: ",str(getMaxSearchDeep()))
-        print('El 8-puzzle se resolvio en: ', time, ' segundos')
-        print("running_time: ", format(time, '.8f'))
-        # '''
+            stop = timeit.default_timer()
+            time = stop-start
+            print("Movimientos a seguir: ", getMoves())
+            print("Nodos Expandidos: ",str(Environment.countNodes()))
+            print("Profundidad Nodo: ",str(getNodeDeep()))
+            print("Profundidad Maxima: ",str(getMaxSearchDeep()))
+            print('El 8-puzzle se resolvio en: ', time, ' segundos')
+            print("running_time: ", format(time, '.8f'))
+        else:
+            print("Stack overflow")
 
     else:
         print("\n")
