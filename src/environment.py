@@ -4,24 +4,21 @@ from src.helpers import *
 En el ambiente vamos a tener el entorno o bien el "mundo" en el que se encuentra el agente que en
 nuestro caso es el tablero de 3x3
 
-
-    Nuestro estado inicial es el siguiente:
-
-    [1,0,2]
-    [6,3,4]
-    [7,5,8]
-
-    El estado final es el siguiente:
-
-    [1,2,3]
-    [4,5,6]
-    [7,8,0]
+El estado meta es el siguiente:
+[1,2,3]
+[4,5,6]
+[7,8,0]
 """
 
 
 class Environment():
     
-    # Environment constructor ***********************************************
+    """ Environment constructor
+        state = estado del nodo
+        parent = padre del nodo
+        depth = profundidad del nodo
+        direccion = direccion del nodo
+     """
     def __init__(self, state, parent, depth, direccion):
         self.state = state
         self.parent = parent
@@ -36,18 +33,11 @@ class Environment():
     def __str__(self):
         return str(self.map)  
 
-    """
-        Actualiza el ambiente dependiendo de la accion que tomo el a gente.
-
-        Argumentos
-        ---------
-        action : str
-            La accion que tomo el agente
-    """
-            
+    # Metodo que realiza el movimiento del estado a una direccion
     def move(self, direction: int):
         move(self.state, direction)
-# Obtain Sub Nodes********************************************************
+
+    # Metodo que obtiene hijos de cada nodo
     def subNodes(node, state, parent, depth):
 
         global NodesExpanded
@@ -66,10 +56,9 @@ class Environment():
                 nodes.append(procPaths)
         return nodes
 
-# Obtain Nodes Expand Counter*********************************************
-
     countNodes = 0
 
+    # Contador de nodos expandidos, cada nodo expandido se cuenta
     def countNodes():
         countNodes = NodesExpanded
         return countNodes

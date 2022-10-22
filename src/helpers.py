@@ -1,13 +1,12 @@
 global GoalState, GoalNode, MaxSearchDeep, MaxFrontier, moves, NodesExpanded, deep
-GoalNode = None  # at finding solution
-GoalState = [1, 2, 3, 4, 5, 6, 7, 8, 0]
-MaxSearchDeep= 0  # max deep
-MaxFrontier= 0  # max frontier
-moves = []
-NodesExpanded= 0  # total nodes visited= 0  # total nodes visited
-deep = 0  # deep
+GoalNode = None  # Nodo meta
+GoalState = [1, 2, 3, 4, 5, 6, 7, 8, 0] # Estado meta
+MaxSearchDeep= 0  # maxima profundidad
+MaxFrontier= 0  # maxima frontera
+NodesExpanded= 0  # total nodos visitados
+deep = 0  # profundidad
 
-# Sets initial board ****************************************************
+# Tablero inicial
 def setInitialBoard(data: [str]):
     board = []
     for i in range(0, 9):
@@ -15,23 +14,14 @@ def setInitialBoard(data: [str]):
     return board
 
 
+""" 
+Metodo que mueve al agente en el tablero
+@param state: el nuevo estado
+@param direction: la direccion del agente
 """
-    Regresa una lista con las posibles acciones que puede tomar el agente
-    dependiendo de la posicion en la que se encuentre y el estado del tablero.
-    Argumentos
-    ---------
-    state : int
-    direction : int
-        El cuadro en el que se encuentra el agente
-"""
-# Move agent on board**************************************************************
-
-
 def move(state: [int], direction: int):
-    # generate a copy
     newState = state[:]
-
-    # obtain poss of 0
+    # Obtiene la posicion del agente
     index = newState.index(0)
 
     if (index == 0):
@@ -173,16 +163,11 @@ def move(state: [int], direction: int):
             return None
         return newState
 
+# Metodo para encontrar el 0 en el tablero
 def findCero(state: [int]):
     for i in range(len(state)):
         if state[i] == 0:
             return i
-
-# Python3 program to check if a given
-# instance of 8 puzzle is solvable or not
-
-# A utility function to count
-# inversions in given array 'arr[]'
 
 
 def getInvCount(arr):
@@ -195,19 +180,18 @@ def getInvCount(arr):
     return inv_count
 
 
-# This function returns true
-# if given 8 puzzle is solvable.
+# Metodo que regresa True si el puzzle tiene solucion
 def isSolvable(puzzle: [int]):
     
     puzzle = transformToArray(puzzle)
 
-    # Count inversions in given 8 puzzle
+    # Contador de inversiones del puzzle
     inv_count = getInvCount([j for sub in puzzle for j in sub])
 
-    # return true if inversion count is even.
+    # Regresa True si las inversiones son par
     return (inv_count % 2 == 0)
 
-
+# Metodo que transforma nuestro puzzle a un array
 def transformToArray(state: [int]):
     return [[state[0], state[1], state[2]],
             [state[3], state[4], state[5]],

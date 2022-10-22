@@ -3,12 +3,14 @@
 ![logo](media/logos-unam-fc.png)
 
 
-<b>Por: Almeida Rodriguez Jeronimo </b>,
-<b>Hernandez Alonso Diana Berenice </b>,
-<b>Jaramillo Ramirez Yonathan Berith </b>,
-<b>Pérez Jacome David </b>,
-<b>Torres Escobedo Julio Cesar </b>,  Mexico, CDMX.<br />
-Lenguaje de programacion: Python 3.10.6<br />
+Por:
+* Almeida Rodriguez Jeronimo
+* Hernandez Alonso Diana Berenice
+* Jaramillo Ramirez Yonathan Berith
+* Pérez Jacome David
+* Torres Escobedo Julio Cesar  
+Mexico, CDMX.
+<br>Lenguaje de programacion: Python 3.10.6<br />
 Descripcion: Implementacion Depth-First Search para resolver el 8 puzzle game.
 
 # Depth-First Saearch algoritmo para resolver 8 PUZZLE 
@@ -27,21 +29,22 @@ Es un algoritmo para hacer busquedas en estructuras de datos como un arbol o bie
 Para mas informacion visitar los siguientes links
 
 Link: wikipedia ->  https://en.wikipedia.org/wiki/Depth-first_search
+
 Link: wikipedia -> https://en.wikipedia.org/wiki/Backtracking
 
 ## 3. Datos de entrada del programa
 
-Execute python3 via comand prompt:
+Ejecutar python3 via comand prompt:
 
 ```sh
 python3 main.py 'Estado del tablero inicial'
 ```
- El estado del tablero inicial  es con lo que se va a inicar a correr el algoritmo para encontrar el mejor camino<br/>
+ El estado del tablero inicial  es con lo que se va a inicar a correr el algoritmo para encontrar el mejor camino
 
 Ejemplo dfs:
 
 ```sh
-python3 main.py 1,e,2,6,3,4,7,5,8
+python3 main.py 1,0,2,6,3,4,7,5,8
 ```
 
 ## 4. Reporte de resultados

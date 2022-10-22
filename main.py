@@ -15,12 +15,10 @@ def main():
     args = parser.parse_args()
     data = args.initial_state.split(',')
 
-    # Start operations
+    # Comienza operaciones del algoritmo
     start = timeit.default_timer()
 
-
-
-    # Build initial board state
+    # Inicializa el estado inicial
     initial_state = setInitialBoard(data)
 
     # Inicializa el ambiente
@@ -33,17 +31,16 @@ def main():
     print('La IA esta resolviendo el puzzle...')
     
     if(isSolvable(universe.state)): 
-        # Running Depth First Search algorithm
+        # Corremos el algoritmo depth first search
         dfs(universe)
         # '''
-        # Results report
-        # Todo: Path should contain the moves to get to the goal state
+        # Reporte de resultados
         stop = timeit.default_timer()
         time = stop-start
         print("Movimientos a seguir: ", getMoves())
-        print("Nodos expandidos: ",str(Environment.countNodes()))
+        print("Nodos Expandidos: ",str(Environment.countNodes()))
         print("Profundidad Nodo: ",str(getNodeDeep()))
-        print("Maximo Nodo Profundo: ",str(getMaxSearchDeep()))
+        print("Profundidad Maxima: ",str(getMaxSearchDeep()))
         print('El 8-puzzle se resolvio en: ', time, ' segundos')
         print("running_time: ", format(time, '.8f'))
         # '''

@@ -3,7 +3,7 @@ from src.environment import Environment
 from src.helpers import *
 
 
-# Depth First Search *****************************************************
+# Algoritmo Depth First Search
 def dfs(environment):
     global GoalState, GoalNode, MaxSearchDeep, MaxFrontier, initial_state
     boardVisited = set()
@@ -12,8 +12,8 @@ def dfs(environment):
     while stack:
         node = stack.pop()
         boardVisited.add(node.map)
-        print("Lo que queremos:", GoalState)
-        print("Lo que tenemos:", node.state)
+        print("Nodo Meta:", GoalState)
+        print("Nodo Actual:", node.state)
         if node.state == GoalState:
             print("\n")
             print("---------------------------------- RESULTADOS ----------------------------------")
@@ -21,8 +21,8 @@ def dfs(environment):
             GoalNode = node
             setMoves(initial_state, GoalNode)
             return stack
-        #inverse the order of next paths for execution porpuses
-        print("node:", node.depth)
+        # Invertimos el orden por cuestion de programacion
+        print("\nProfundidad Nodo Actual:", node.depth)
         posiblePaths = reversed(environment.subNodes(node.state, node, node.depth))
         for path in posiblePaths:
             if path.map not in boardVisited:
@@ -34,19 +34,20 @@ def dfs(environment):
             
             MaxFrontier = len(stack)
             
-    # Path result
+    # Resultado si no encontramos la solucion
     print("No encontramos solucion!")
 
-# Return Goal Node Depth*****************************************************
+# Regresa la profunidad del nodo
 def getNodeDeep():
     return GoalNode.depth
 
-# Return the Deepest Node Explored*******************************************
+# Regresa la profundidad maxima
 def getMaxSearchDeep():
     return MaxSearchDeep
 
 moves = []
 
+# Agregamos los movimientos que realiza: "Arriba", "Abajo", "Izquierda" y "Derecha"
 def setMoves(initial_state, GoalNode):
     while initial_state != GoalNode.state:
         string = ""
@@ -61,6 +62,7 @@ def setMoves(initial_state, GoalNode):
         moves.insert(0, string)
         GoalNode = GoalNode.parent
 
+# Regresa la lista de movimientos
 def getMoves():
     return moves
     
